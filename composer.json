@@ -1,0 +1,19 @@
+{
+    "name": "colleua/gestion_sanctions",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ArthurColleu",
+            "email": "colleuarthur@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^3.3",
+        "symfony/cache": "^7.1"
+    }
+}
