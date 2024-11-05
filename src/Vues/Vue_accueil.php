@@ -16,7 +16,7 @@ class Vue_accueil extends Vue_Composant
     {
         $str= "
             <h1 class='bg-black text-white'>Accueil du site du lycée Gaudper</h1>
-            <p>Bienvenue dans la page d'accueil du site du lycée Gauadper pour mettre des sanctions aux élèves qui ne 
+            <p>Bienvenue dans la page d'accueil du site du lycée Gaudper pour mettre des sanctions aux élèves qui ne 
             sont pas sages.</p>
         $this->msgErreur
     ";

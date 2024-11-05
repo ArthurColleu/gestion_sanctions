@@ -15,8 +15,14 @@ class Vue_footer extends Vue_Composant
     function donneTexte(): string
     {
         return "
-        <footer class='bg-body-secondary
-'>
+        <footer class='bg-body-secondary fixed-bottom text-center'>
+        <div class='container text-center'>
+            <div class='col'>
+                <div class='d-inline'>Mentions légales </div>
+                <div class='d-inline'> Contact</div>
+            </div>
+        </div>
+
             © 2024 Gestion de tâches , tout droits réserver
         </footer>
             " ;

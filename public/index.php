@@ -38,6 +38,6 @@ switch ($case) {
 }
 $Vue->afficher();
 ?>
-<script src="/public/js/bootstrap.min.js" ></script>
+<script src="js/bootstrap.min.js" ></script>
     </body>
 </html>
