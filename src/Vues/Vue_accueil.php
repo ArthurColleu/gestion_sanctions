@@ -15,7 +15,9 @@ class Vue_accueil extends Vue_Composant
     function donneTexte(): string
     {
         $str= "
-            <h1>User Story✋😌</h1>
+            <h1 class='bg-black text-white'>Accueil du site du lycée Gaudper</h1>
+            <p>Bienvenue dans la page d'accueil du site du lycée Gauadper pour mettre des sanctions aux élèves qui ne 
+            sont pas sages.</p>
         $this->msgErreur
     ";
         return $str ;

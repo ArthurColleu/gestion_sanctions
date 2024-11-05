@@ -7,10 +7,10 @@ switch ($page){
         $Vue->addToCorps(new \App\Vues\Vue_accueil());
         break;
     case "creationCompte":
-        include "src/Controler/creationCompte.php";
+        include "CreationCompte.php";
         break;
     case "connexion":
-        include "src/Controler/connexionCompte.php";
+        include "connexionCompte.php";
         break;
 }
 $Vue->setBasDePage(new \App\Vues\Vue_footer());

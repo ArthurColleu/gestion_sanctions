@@ -15,9 +15,10 @@ class Vue_footer extends Vue_Composant
     function donneTexte(): string
     {
         return "
-        <footer>
+        <footer class='bg-body-secondary
+'>
             © 2024 Gestion de tâches , tout droits réserver
-        </footer>    
+        </footer>
             " ;
     }
 }
