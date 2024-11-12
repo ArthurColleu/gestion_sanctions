@@ -29,6 +29,10 @@ class Vue_creationCompte extends Vue_Composant
         <label for='password'>Entrez mot de passe : </label>
         <input type='text' name='password'>
     </div>
+    <div>
+        <label for='password'>Confirmation de mot de passe : </label>
+        <input type='text' name='password'>
+    </div>
     <button type='submit'>créer son compte</button>
 </form>
         $this->msgErreur

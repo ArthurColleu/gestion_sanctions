@@ -36,6 +36,12 @@ class CreateAccount
         if (strlen($password)<8){
             throw new Exception("Le mot de passe doit contenir au moins 8 caractères");
         }
+        //Verifier si le mot de passe est valide
+        //Si tel n'est pas le cas, lancer une exception
+        if ($password != $confirmPassword){
+            throw new Exception("Les mots de passe ne correspondent pas");
+        }
+
         //Verifier si le mot de passe est sécurisé, lancer une exception
         //Si tel n'est pas le cas, lancer une exception
         if (!preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)){
