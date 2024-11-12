@@ -11,12 +11,34 @@ class User
     #[ORM\Column(name: 'id_user', type: 'integer')]
     #[ORM\GeneratedValue]
     private int $id;
-    #[ORM\Column(name: 'pseudo_user', type: 'string', length: 50)]
-    private string $pseudo;
+    #[ORM\Column(name: 'nom_user', type: 'string', length: 50)]
+    private string $nom;
+    #[ORM\Column(name: 'prenom_user', type: 'string', length: 50)]
+    private string $prenom;
     #[ORM\Column(name: 'email_user', type: 'string', length: 100, unique: true)]
     private string $email;
     #[ORM\Column(name: 'password_user', type: 'string')]
     private string $password;
+
+    public function getPrenom(): string
+    {
+        return $this->prenomUser;
+    }
+
+    public function setPrenom(string $prenomUser): void
+    {
+        $this->prenomUser = $prenomUser;
+    }
+
+    public function getNom(): string
+    {
+        return $this->nomUser;
+    }
+
+    public function setNom(string $nomUser): void
+    {
+        $this->nomUser = $nomUser;
+    }
 
     public function getId(): int
     {
@@ -46,16 +68,6 @@ class User
     public function setPassword(string $password): void
     {
         $this->password = $password;
-    }
-
-    public function getPseudo(): string
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(string $pseudo): void
-    {
-        $this->pseudo = $pseudo;
     }
 
     public function authenticate(string $password, callable $checkHash): bool
