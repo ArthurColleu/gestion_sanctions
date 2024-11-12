@@ -9,6 +9,9 @@ switch ($page){
     case "creationCompte":
         include "CreationCompte.php";
         break;
+    case "mentionsLegale":
+        $Vue->addToCorps(new \App\Vues\Vue_Mentions_Legales());
+        break;
     case "connexion":
         include "connexionCompte.php";
         break;

@@ -18,7 +18,7 @@ class Vue_footer extends Vue_Composant
         <footer class='bg-body-secondary fixed-bottom text-center'>
             <div class='container text-center'>
                 <div class='col'>
-                    <a class='d-inline'  href='?page=mentionsLegale'> Mentions légales, </a>
+                    <a class='d-inline text-black link-underline link-underline-opacity-0'  href='?page=mentionsLegale'> Mentions légales, </a>
                     <div class='d-inline'> Contact</div>
                 </div>
             </div>

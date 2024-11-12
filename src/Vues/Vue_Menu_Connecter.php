@@ -15,7 +15,7 @@ class Vue_Menu_Connecter extends Vue_Composant
     function donneTexte(): string
     {
         return "
-        <header class='bg-'>
+        <header class='bg-black'>
             <nav id='menu'>
               <ul id='menu-closed'> 
                 <li><a href='?case=connecter&page=accueil'>Accueil</a></li>
