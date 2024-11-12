@@ -16,14 +16,18 @@ class Vue_footer extends Vue_Composant
     {
         return "
         <footer class='bg-body-secondary fixed-bottom text-center'>
-        <div class='container text-center'>
-            <div class='col'>
-                <div class='d-inline'>Mentions légales </div>
-                <div class='d-inline'> Contact</div>
+            <div class='container text-center'>
+                <div class='col'>
+                    <a class='d-inline'  href='?page=mentionsLegale'> Mentions légales, </a>
+                    <div class='d-inline'> Contact</div>
+                </div>
             </div>
-        </div>
-
-            © 2024 Gestion de tâches , tout droits réserver
+            <div>
+                © 2024 Gestion de tâches , tout droits réserver
+            </div>
+            <div>
+                 <i class='bi bi-twitter-x'> </i><i class='bi bi-instagram'> </i><i class='bi bi-facebook'></i>
+            </div>
         </footer>
             " ;
     }
