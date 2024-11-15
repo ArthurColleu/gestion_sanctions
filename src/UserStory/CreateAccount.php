@@ -31,7 +31,7 @@ class CreateAccount
         if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
             throw new Exception("Veuillez entrer un mail valide");
         }
-        //Verifier si le pseudo est entre 8 et 50 caractères, lancer une exception
+        //Verifier si le mot de passe est au moins 8 caractères, lancer une exception
         //Si tel n'est pas le cas, lancer une exception
         if (strlen($password)<8){
             throw new Exception("Le mot de passe doit contenir au moins 8 caractères");
@@ -59,8 +59,8 @@ class CreateAccount
 
         // 2.Créer une instance de classe User
         $user = new User(); //setter
-        $user->setPseudo($nom);
-        $user->setPseudo($prenom);
+        $user->setNom($nom);
+        $user->setPrenom($prenom);
         $user->setEmail($email);
         $user->setPassword($password);
 

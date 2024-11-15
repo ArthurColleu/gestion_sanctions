@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
     #[ORM\Id]
-    #[ORM\Column(name: 'id_user', type: 'integer')]
+    #[ORM\Column(name: 'id_users', type: 'integer')]
     #[ORM\GeneratedValue]
     private int $id;
     #[ORM\Column(name: 'nom_user', type: 'string', length: 50)]
@@ -20,26 +20,6 @@ class User
     #[ORM\Column(name: 'password_user', type: 'string')]
     private string $password;
 
-    public function getPrenom(): string
-    {
-        return $this->prenomUser;
-    }
-
-    public function setPrenom(string $prenomUser): void
-    {
-        $this->prenomUser = $prenomUser;
-    }
-
-    public function getNom(): string
-    {
-        return $this->nomUser;
-    }
-
-    public function setNom(string $nomUser): void
-    {
-        $this->nomUser = $nomUser;
-    }
-
     public function getId(): int
     {
         return $this->id;
@@ -48,6 +28,26 @@ class User
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): void
+    {
+        $this->nom = $nom;
+    }
+
+    public function getPrenom(): string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): void
+    {
+        $this->prenom = $prenom;
     }
 
     public function getEmail(): string
@@ -69,6 +69,8 @@ class User
     {
         $this->password = $password;
     }
+
+
 
     public function authenticate(string $password, callable $checkHash): bool
     {

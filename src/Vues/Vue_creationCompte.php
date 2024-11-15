@@ -18,20 +18,24 @@ class Vue_creationCompte extends Vue_Composant
 <h1>Créer votre compte✋😌</h1>
 <form action='/?case=nonConnecter&page=creationCompte' method='post'>
     <div>
-        <label for='pseudo'>Entrez votre pseudo : </label>
-        <input type='text' name='pseudo'>
+        <label for='prenom'>Prénom : </label>
+        <input type='text' name='prenom'>
+    </div>
+    <div>
+        <label for='nom'>Nom : </label>
+        <input type='text' name='nom'>
     </div>
     <div>
         <label for='email'>Entrez votre email : </label>
         <input type='email' name='email'>
     </div>
     <div>
-        <label for='password'>Entrez mot de passe : </label>
+        <label for='password'>Mot de passe : </label>
         <input type='text' name='password'>
     </div>
     <div>
-        <label for='password'>Confirmation de mot de passe : </label>
-        <input type='text' name='password'>
+        <label for='confirmePassword'>Confirmation de mot de passe : </label>
+        <input type='text' name='confirmePassword'>
     </div>
     <button type='submit'>créer son compte</button>
 </form>

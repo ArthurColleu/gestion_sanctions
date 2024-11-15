@@ -38,6 +38,6 @@ class ConnexionAccount
         if (password_verify($password, $user->getPassword())) {
             throw new Exception("Mot de passe incorrect");
         }
-        echo "Vous êtes connecté en tant que :". $user->getPseudo();
+        echo "Vous êtes connecté en tant que :". $user->getPrenom()." ". $user->getNom();
     }
 }
