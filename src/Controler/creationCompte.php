@@ -1,37 +1,53 @@
 <?php
 
-$entityManager = require_once __DIR__.'/../../config/bootstrap.php';
+namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use App\UserStory\CreateAccount;
 use App\Utilitaire\Vue;
 
-$Vue = new Vue();
-$Vue->setMenu(new \App\Vues\Vue_Menu_Non_Connecter());
-$Vue->addToCorps(new \App\Vues\Vue_creationCompte());
-$Vue->setBasDePage(new \App\Vues\Vue_footer());
-
-if (isset($_POST["confirmePassword"]) &&
-    isset($_POST["nom"]) &&
-    isset($_POST["email"]) &&
-    isset($_POST["prenom"]) &&
-    isset($_POST["password"]))
+class CreateAccountController extends AbstractController
 {
-
-    $email = $_POST["email"];
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-    $password = $_POST["password"];
-    $verifPassword = $_POST["confirmePassword"];
-
-    $account = new \App\UserStory\CreateAccount($entityManager);
-    try {
-        $account->execute($nom, $prenom,$email,$password, $verifPassword);
+    #[Route('/create-account', name: 'create_account', methods: ['GET', 'POST'])]
+    public function createAccount(Request $request, CreateAccount $account): Response
+    {
+        // Initialisation de la vue
         $Vue = new Vue();
-        $Vue->setMenu(new \App\Vues\Vue_Menu_Connecter());
-        echo "<div class='text-white bg-black'>Création de compte terminée</div>";
-        $Vue->addToCorps(new \App\Vues\Vue_Connexion());
-    } catch (\Exception $e){
-        echo $e->getMessage();
-    }
+        $Vue->setMenu(new \App\Vues\Vue_Menu_Non_Connecter());
+        $Vue->setBasDePage(new \App\Vues\Vue_footer());
+        $Vue->addToCorps(new \App\Vues\Vue_creationCompte());
 
+        if ($request->isMethod('POST')) {
+            // Récupération des données du formulaire
+            $email = $request->request->get('email');
+            $nom = $request->request->get('nom');
+            $prenom = $request->request->get('prenom');
+            $password = $request->request->get('password');
+            $verifPassword = $request->request->get('confirmePassword');
+
+            try {
+                // Exécution de la logique métier pour créer un compte
+                $account->execute($nom, $prenom, $email, $password, $verifPassword);
+
+                // Mise à jour de la vue en cas de succès
+                $Vue->setMenu(new \App\Vues\Vue_Menu_Connecter());
+                $Vue->addToCorps(new \App\Vues\Vue_Connexion());
+
+                // Message de succès
+                $this->addFlash('success', 'Création de compte terminée.');
+            } catch (\Exception $e) {
+                // Message d'erreur
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        // Rendu de la vue
+        return $this->render('create_account.html.twig', [
+            'vue' => $Vue,
+        ]);
+    }
 }
 
