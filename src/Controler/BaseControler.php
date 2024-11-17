@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Controler;
+
 class BaseControler extends AbstractControler
 {
+
     // Méthode permettant de gérer la page d'accueil
     public function render(string $template, array $data = []) : void {
         extract($data);

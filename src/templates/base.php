@@ -31,11 +31,11 @@ echo "
             <ul class='navbar-nav me-auto'>
 
                 <li class='nav-item'>
-                    <a class='nav-link' href='/sanctions/login'>Connexion</a>
+                    <a class='nav-link' href='/?case=login'>Connexion</a>
                 </li>";
                 if ($connecte == 'no'){
                     echo "<li class='nav-item'>
-                    <a class='nav-link' href='/sanctions/create'>Créer un compte</a>
+                    <a class='nav-link' href='/?case=create'>Créer un compte</a>
                 </li>";
                 }
             echo "</ul>

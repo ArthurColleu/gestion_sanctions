@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'defaut' => ['BaseControler', 'accueil', ["connecte" => "no"]],
-    'connexion'=> ['BaseControler' , 'connexion', ["connecte" => "no"]]
+    'defaut' => ['BaseControler', 'defaut', ["connecte" => $connectionStatus]],
+    'login'=> ['ConnexionControler' , 'connexion', ["connecte" => $connectionStatus]],
+    'create'=> ['BaseControler' , 'create', ["connecte" => $connectionStatus]]
 ];
