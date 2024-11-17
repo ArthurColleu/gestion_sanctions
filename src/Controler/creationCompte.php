@@ -25,7 +25,10 @@ if (isset($_POST["confirmePassword"]) &&
     $account = new \App\UserStory\CreateAccount($entityManager);
     try {
         $account->execute($nom, $prenom,$email,$password, $verifPassword);
+        $Vue = new Vue();
+        $Vue->setMenu(new \App\Vues\Vue_Menu_Connecter());
         echo "<div class='text-white bg-black'>Création de compte terminée</div>";
+        $Vue->addToCorps(new \App\Vues\Vue_Connexion());
     } catch (\Exception $e){
         echo $e->getMessage();
     }
