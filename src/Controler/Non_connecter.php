@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $Vue->setMenu(new \App\Vues\Vue_Menu_Non_Connecter());
 
 switch ($page){

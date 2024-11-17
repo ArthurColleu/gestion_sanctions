@@ -24,20 +24,22 @@ class ConnexionAccount
         //Vérifier que les données sont présentes
         //Si tel n'est pas le cas, lancer une exception
         if (empty($email) && empty($password)){
-            throw new Exception("Veuillez entrer tous les champs");
+            throw new \Exception("Veuillez entrer tous les champs");
         }
         //Verifier si l'email est valide
         //Si tel n'est pas le cas, lancer une exception
         if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
-            throw new Exception("Veuillez entrer un mail valide");
+            throw new \Exception("Veuillez entrer un mail valide");
         }
         //Verifier si le mot de passe est valide
         //Si tel est le cas, lancer une exception
         $repository = $this->entityManager->getRepository(User::class);
         $user = $repository->findOneBy(array("email" => $email));
-        if (password_verify($password, $user->getPassword())) {
-            throw new Exception("Mot de passe incorrect");
+        if (!isset($user)){
+            throw new \Exception("Email introuvable");
         }
-        echo "Vous êtes connecté en tant que :". $user->getPrenom()." ". $user->getNom();
+        if (password_verify($password, $user->getPassword())) {
+            throw new \Exception("Mot de passe incorrect");
+        }
     }
 }

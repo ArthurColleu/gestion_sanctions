@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
     #[ORM\Id]
-    #[ORM\Column(name: 'id_users', type: 'integer')]
+    #[ORM\Column(name: 'id_user', type: 'integer')]
     #[ORM\GeneratedValue]
     private int $id;
     #[ORM\Column(name: 'nom_user', type: 'string', length: 50)]
