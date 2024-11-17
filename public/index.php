@@ -28,15 +28,13 @@ $Vue = new Vue();
     <body>
 
 <?php
-switch ($case) {
-    case "nonConnecter":
-    case "defaut":
-        include "../src/Controler/Non_connecter.php";
-        break;
-    case "connecter":
-        include "../src/Controler/connecter.php";
-        break;
-}
+$entityManager = require_once __DIR__ . '/../config/bootstrap.php';
+$routes = require_once __DIR__ . '/../config/routes.php';
+[$controllerName, $template, $param] = $routes[$case];
+$controllerClass = "App\\Controler\\{$controllerName}";
+$controler = new $controllerClass();
+$controler->render($template,$param);
+
 $Vue->afficher();
 ?>
 <script src="js/bootstrap.min.js" ></script>
