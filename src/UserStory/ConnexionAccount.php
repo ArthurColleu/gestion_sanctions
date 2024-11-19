@@ -41,5 +41,8 @@ class ConnexionAccount
         if (password_verify($password, $user->getPassword())) {
             throw new \Exception("Mot de passe incorrect");
         }
+        $_SESSION["prenom"] = $user->getPrenom();
+        $_SESSION["nom"] = $user->getNom();
+
     }
 }
