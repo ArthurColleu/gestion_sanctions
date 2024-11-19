@@ -71,7 +71,6 @@ class User
     }
 
 
-
     public function authenticate(string $password, callable $checkHash): bool
     {
         return $checkHash($password, $this->password);

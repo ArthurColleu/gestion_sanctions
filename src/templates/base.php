@@ -18,74 +18,64 @@
 ?>
 
 <?php
-echo "
-<nav class='navbar navbar-expand-lg ' data-bs-theme='light'>
-    <div class='container-fluid'>
-        <a class='navbar-brand' href='/sanctions'>
-            <img src='images/logo_lycee_Gaudper.png' alt='Logo GaudPer' width='140' height='36' class='d-inline-block align-top me-'>
-        </a>
-        <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarColor03' aria-controls='navbarColor03' aria-expanded='false' aria-label='Toggle navigation'>
-            <span class='navbar-toggler-icon'></span>
-        </button>
-        <div class='collapse navbar-collapse' id='navbarColor03'>
-            <ul class='navbar-nav me-auto'>
-
-                <li class='nav-item'>
-                    <a class='nav-link' href='/?case=login'>Connexion</a>
-                </li>";
-                if ($connecte == 'no'){
-                    echo "<li class='nav-item'>
-                    <a class='nav-link' href='/?case=create'>Créer un compte</a>
-                </li>";
-                }
-            echo "</ul>
-        </div>
-    </div>
-</nav>
-<hr class='my-4 opacity-25 container'>
-"
+echo "<header class='bg-black py-1 '>
+            <nav class='navbar navbar-expand-sm'>
+                <img src='images/logo_lycee_Gaudper.png' class='mx-2 ' alt='logo' style='height:75px'> 
+                <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+                    <span class='navbar-toggler-icon'></span>
+                </button>
+                <div class='container-fluid'>
+                    <div class='collapse navbar-collapse' id='navbarNav'>
+                        <div class='navbar-nav'>
+                            <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='?case=defaut'>Accueil</a>";
+                            if ($connecte == 'no'){
+                                echo "
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='?case=login'>Se connecter</a>
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='?case=create'>créer un compte</a>";
+                            } else {
+                                echo "<a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/?case=disconnect&action=disconnect'>Déconnexion</a>";
+                            }
+                            echo "</div>
+                    </div>
+                </div>
+            </nav>
+        </header>";
+        if(isset($_SESSION["prenom"]) && isset($_SESSION["nom"])){
+            echo "<div> Vous êtes connecté en tant que ".$_SESSION["prenom"]." ".$_SESSION["nom"]." </div>";
+        }
 ?>
 
 <?php
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////// HEADER //////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//-------- HEADER ----------//
 ?>
 
 <main class="container">
-    <?= $content ?>
+    
+    <?php
+    if(isset($errorMessage) && !empty($errorMessage)){
+        echo "<div class='text-red'>$errorMessage </div>";
+    }
+    echo $content; ?>
 </main>
 
 <?php
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////// FOOTER //////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//--------- FOOTER --------//
 ?>
 
-<hr class="my-4 opacity-25 container">
-<div class="container">
-    <div class="row">
-        <div class="col mt-5">
-            <h3 class="fs-5 display-6">Support : vie.scolaire@gaudper.fr</h3>
-            <h3 class="fs-5 display-6">Réseaux Sociaux : tiktok.com/gaudpersanction</h3>
-
-            <ul class="navbar-nav me-auto mt-2 mb-5">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/sanctions">Retour à l'accueil</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/legal">Mention légal</a>
-                </li>
-
-            </ul>
-        </div>
-        <div class="col mb-3 mt5">
-            <img class="w-75 border-dark mt5 " src="/assets/images/logosansimage.png" alt="">
+<footer class='bg-body-secondary fixed-bottom text-center'>
+    <div class='container text-center'>
+        <div class='col'>
+            <a class='d-inline text-black link-underline link-underline-opacity-0'  href='?case=mentionsLegale'> Mentions légales, </a>
+            <div class='d-inline'> Contact</div>
         </div>
     </div>
-</div>
+    <div>
+        © 2024 Gestion de tâches , tout droits réserver
+    </div>
+    <div>
+        <i class='bi bi-twitter-x'> </i><i class='bi bi-instagram'> </i><i class='bi bi-facebook'></i>
+    </div>
+</footer>
 
 
 </html>

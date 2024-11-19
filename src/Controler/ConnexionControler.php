@@ -2,30 +2,21 @@
 
 namespace App\Controler;
 use App\UserStory;
+use App\UserStory\ConnexionAccount;
+use Exception;
 
 class ConnexionControler extends BaseControler
 {
     public function login(): void
     {
-        if (!empty($_POST["connexionEmail"]) && !empty($_POST["connexionPassword"])) {
-            $email = trim($_POST["connexionEmail"]);
-            $password = trim($_POST["connexionPassword"]);
+        $email = $_REQUEST["connexionEmail"];
+        $password = $_REQUEST["connexionPassword"];
 
-            $connexion = new ConnexionAccount($this->entityManager);
-
-            try {
-                $connexion->connexion($email, $password);
-
-                $repository = $this->entityManager->getRepository(User::class);
-                $user = $repository->findOneBy(["email" => $email]);
-
-                if ($user) {
-                    $_SESSION["prenom"] = $user->getPrenom();
-                    $_SESSION["nom"] = $user->getNom();
-                }
-            } catch (\Exception $e) {
-                echo "<div class='text-danger'>Erreur : " . $e->getMessage() . "</div>";
-            }
+        $connector = new ConnexionAccount($this->entityManager);
+        try{
+            $connector->connexion($email, $password);
+        } catch(\Exception $e){
+            $_SESSION["errorMessage"] = $e->getMessage();
         }
     }
 }

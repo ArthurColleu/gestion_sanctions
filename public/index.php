@@ -40,17 +40,17 @@ $routes = require_once __DIR__ . '/../config/routes.php';
 [$controllerName, $template, $param] = $routes[$case];
 $controllerClass = "App\\Controler\\{$controllerName}";
 $controler = new $controllerClass($entityManager);
-if (empty($action)){
-    $controler->render($template,$param);
-    $Vue->afficher();
-} else {
+if ( ! empty($action)){
     if (method_exists($controler, $action)) {
         $controler->{$action}();
     } else {
         echo "Unknown method $action on Controler";
     }
 }
-
+$parameters = array_merge($param, $_SESSION);
+$controler->render($template,$parameters);
+$Vue->afficher();
+unset($_SESSION["errorMessage"]);
 ?>
 <script src="js/bootstrap.min.js" ></script>
     </body>
