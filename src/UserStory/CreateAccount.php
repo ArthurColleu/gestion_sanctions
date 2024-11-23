@@ -45,13 +45,13 @@ class CreateAccount
         //Verifier si le mot de passe est sécurisé, lancer une exception
         //Si tel n'est pas le cas, lancer une exception
         if (!preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $password)){
-            throw new \Exception("Votre mot de passe doit contenir au moins une minuscule, une majuscule , un chiffre et un caractères spéciale.");
+            throw new Exception("Votre mot de passe doit contenir au moins une minuscule, une majuscule , un chiffre et un caractères spéciale.");
         }
         //Verifier si l'unicité de l'email
         //Si tel n'est pas le cas, lancer une exception
         $verifEmail = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
         if ($verifEmail){
-            throw new \Exception("l'email est déjà utilisé");
+            throw new Exception("l'email est déjà utilisé");
         }
         //Insérer les données dans la base de données
         // 1.Hash le mot de passe

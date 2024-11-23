@@ -28,20 +28,20 @@ echo "<header class='bg-black py-1 '>
                     <div class='collapse navbar-collapse' id='navbarNav'>
                         <div class='navbar-nav'>
                             <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='?case=defaut'>Accueil</a>";
-                            if ($connecte == 'no'){
+                            if ( ! isset($connectionStatus) || $connectionStatus == 'no'){
                                 echo "
                                     <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='?case=login'>Se connecter</a>
                                     <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='?case=create'>créer un compte</a>";
                             } else {
-                                echo "<a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/?case=disconnect&action=disconnect'>Déconnexion</a>";
+                                echo "<a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/?case=disconnect&action=disconnect&postaction=redirectHome'>Déconnexion</a>";
                             }
                             echo "</div>
                     </div>
                 </div>
             </nav>
         </header>";
-        if(isset($_SESSION["prenom"]) && isset($_SESSION["nom"])){
-            echo "<div> Vous êtes connecté en tant que ".$_SESSION["prenom"]." ".$_SESSION["nom"]." </div>";
+        if(isset($prenom) && isset($nom)){
+            echo "<div> Vous êtes connecté en tant que " . $prenom . " " . $nom . " </div>";
         }
 ?>
 
@@ -52,6 +52,9 @@ echo "<header class='bg-black py-1 '>
 <main class="container">
     
     <?php
+    //if(isset($session)) {
+    //    echo "<div class='text-black'>" . var_dump($session) . " </div>";
+    //}
     if(isset($errorMessage) && !empty($errorMessage)){
         echo "<div class='text-red'>$errorMessage </div>";
     }

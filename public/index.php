@@ -3,15 +3,16 @@ session_start();
 require_once __DIR__ . "/../vendor/autoload.php";
 use App\Utilitaire\Vue;
 
-if (isset($_SESSION["prenom"])) {
-    $connectionStatus="yes";
-} else {
-    $connectionStatus="no";
-}
+
 if (isset($_REQUEST["action"])) {
     $action = $_REQUEST["action"];
 } else {
     $action = "";
+}
+if (isset($_REQUEST["postaction"])) {
+    $postaction = $_REQUEST["postaction"];
+} else {
+    $postaction = "";
 }
 if (isset($_REQUEST["case"]))
     $case = $_REQUEST["case"];
@@ -40,17 +41,34 @@ $routes = require_once __DIR__ . '/../config/routes.php';
 [$controllerName, $template, $param] = $routes[$case];
 $controllerClass = "App\\Controler\\{$controllerName}";
 $controler = new $controllerClass($entityManager);
+$redirect = "";
 if ( ! empty($action)){
     if (method_exists($controler, $action)) {
-        $controler->{$action}();
+        $redirect = $controler->{$action}();
     } else {
         echo "Unknown method $action on Controler";
     }
 }
-$parameters = array_merge($param, $_SESSION);
+if($redirect) {
+    header('Location: ' . $redirect, true, 303);
+    die(); 
+}
+if(isset($_SESSION)) {
+    $parameters = array_merge($param, $_SESSION);
+} else {
+    $parameters = $param;
+}
+
 $controler->render($template,$parameters);
 $Vue->afficher();
 unset($_SESSION["errorMessage"]);
+if ( ! empty($postaction)){
+    if (method_exists($controler, $postaction)) {
+        $controler->{$postaction}();
+    } else {
+        echo "Unknown method $postaction on Controler";
+    }
+}
 ?>
 <script src="js/bootstrap.min.js" ></script>
     </body>

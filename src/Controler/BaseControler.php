@@ -7,6 +7,9 @@ class BaseControler extends AbstractControler
 
     // Méthode permettant de gérer la page d'accueil
     public function render(string $template, array $data = []) : void {
+        if (isset($_SESSION)) {
+            $data = array_merge($data, ["session" => $_SESSION]);
+        }
         extract($data);
         ob_start();
         require __DIR__ . '/../templates/' . $template . '.php';

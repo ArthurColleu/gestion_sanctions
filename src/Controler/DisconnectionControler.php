@@ -9,6 +9,13 @@ class DisconnectionControler extends BaseControler
 {
     public function disconnect(): void
     {
-        unset($_SESSION);
+        $_SESSION["connectionStatus"] = "no";
+        unset($_SESSION["prenom"]);
+        unset($_SESSION["nom"]);
+
+    }
+    public function redirectHome(): void
+    {
+        header('Refresh: 5; URL=http://' . $_SERVER["HTTP_HOST"]);
     }
 }
