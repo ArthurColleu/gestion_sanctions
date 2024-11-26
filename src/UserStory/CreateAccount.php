@@ -69,7 +69,7 @@ class CreateAccount
         $this->entityManager->flush();
 
         // Envoi du mail de confirmation
-        echo "Un mail à été envoyé à l'utilisateur";
+        echo "Création de compte réussi";
 
         return $user;
     }

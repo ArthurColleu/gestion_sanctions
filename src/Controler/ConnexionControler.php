@@ -20,7 +20,7 @@ class ConnexionControler extends BaseControler
             //var_dump($_SESSION);
         } catch(\Exception $e){
             $_SESSION["connectionStatus"] = "no";
-            var_dump($_SESSION);
+            //var_dump($_SESSION);
             $_SESSION["errorMessage"] = $e->getMessage();
         }
         return "";
