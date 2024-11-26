@@ -65,7 +65,7 @@ echo "<header class='bg-black py-1 '>
 //--------- FOOTER --------//
 ?>
 
-<footer class='bg-body-secondary fixed-bottom text-center'>
+<footer class='bg-body-secondary fixed-bottom text-center text-black'>
     <div class='container text-center'>
         <div class='col'>
             <a class='d-inline text-black link-underline link-underline-opacity-0'  href='?case=mentionsLegale'> Mentions légales, </a>
