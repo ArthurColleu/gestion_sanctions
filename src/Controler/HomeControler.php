@@ -6,21 +6,22 @@ class HomeControler extends AbstractControler
 {
     public function index(): void
     {
-        $this->render('home/index');
+        $this->render('index');
     }
-    public function mentionsLegal(): void
+    public function mentionsLegale(): void
     {
-        $this->render('home/mentionsLegale');
+        $this->render('mentionsLegale');
     }
     public function login(): void
     {
-        $this->render('home/login');
+        $this->render('login');
     }
     public function create(): void
     {
-        $this->render('home/create');
+        $this->render('create');
     }
-    public function disconnect(): void{
-        $this->render('home/disconnect');
+    public function disconnect(): void
+    {
+        $this->render('disconnect');
     }
 }

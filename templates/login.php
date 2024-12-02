@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class='text-center'>Connexion✋😌</h1>
-    <form action='/?case=login&action=login' name='connecter' method='post' style='max-width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 100px'>
+    <form action='/login' name='connecter' method='post' style='max-width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 100px'>
         <div>
             <label for='connexionEmail' style='display: block;'>Entrez votre email : </label>
             <input type='email' name='connexionEmail' style='width: 100%;'>

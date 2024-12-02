@@ -1,10 +1,9 @@
 <?php
 
 return [
-    '/' => ['BaseControler', 'defaut'],
-    '/login'=> ['ConnexionControler' , 'connexion'],
-    '/create'=> ['UserCreateControler' , 'create'],
-    '/disconnect'=> ['DisconnectionControler' , 'disconnect'],
-    '/mentionsLegale'=> ['BaseControler' , 'mentionsLegale']
-
+    '/' => ['HomeControler', 'index'],
+    '/login'=> ['HomeControler' , 'login'],
+    '/create'=> ['HomeControler' , 'create'],
+    '/disconnect'=> ['HomeControler' , 'disconnect'],
+    '/mentionsLegale'=> ['HomeControler' , 'mentionsLegale']
 ];

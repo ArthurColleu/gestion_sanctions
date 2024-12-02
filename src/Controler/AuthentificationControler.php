@@ -4,15 +4,16 @@ namespace App\Controler;
 
 use App\UserStory\ConnexionAccount;
 use App\UserStory\CreateAccount;
+use Doctrine\ORM\EntityManager;
 
 class AuthentificationControler
 {
-    public function login(): string
+    public function login(EntityManager $entityManager): string
     {
         $email = $_REQUEST["connexionEmail"];
         $password = $_REQUEST["connexionPassword"];
 
-        $connector = new ConnexionAccount($this->entityManager);
+        $connector = new ConnexionAccount($entityManager);
         try{
             $connector->connexion($email, $password);
             $_SESSION["connectionStatus"] = "yes";
@@ -25,7 +26,7 @@ class AuthentificationControler
         }
         return "";
     }
-    public function createUser () : void {
+    public function createUser (EntityManager $entityManager) : void {
         $email = $_REQUEST["email"];
         $prenom = $_REQUEST["prenom"];
         $nom = $_REQUEST["nom"];

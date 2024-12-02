@@ -5,6 +5,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // Récupération des routes
 $routes = require_once __DIR__ . '/../config/routes.php';
 
+// Récupération des routes
+$entityManager = require_once __DIR__ . '/../config/bootstrap.php';
+
 // Récupération de l'URL actuelle
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -17,11 +20,12 @@ if (!isset($routes[$uri])) {
 
 // Récupération du contrôleur et de l'action
 [$controllerName, $action] = $routes[$uri];
-$controllerClass = "App\\Controller\\{$controllerName}";
+//var_dump($controllerName, $action);
+$controllerClass = "App\\Controler\\{$controllerName}";
 
 try {
     // Instanciation du contrôleur et appel de l'action
-    $controller = new $controllerClass();
+    $controller = new $controllerClass($entityManager);
     $controller->$action();
 } catch (\Exception $e) {
     error_log($e->getMessage());
