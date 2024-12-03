@@ -25,7 +25,7 @@ $controllerClass = "App\\Controler\\{$controllerName}";
 
 try {
     // Instanciation du contrôleur et appel de l'action
-    $controller = new $controllerClass($entityManager);
+    $controller = new $controllerClass($entityManager); // Appel du constructeur du controleur
     $controller->$action();
 } catch (\Exception $e) {
     error_log($e->getMessage());

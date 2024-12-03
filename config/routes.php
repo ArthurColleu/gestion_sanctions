@@ -1,9 +1,9 @@
 <?php
 
 return [
-    '/' => ['HomeControler', 'index'],
-    '/login'=> ['HomeControler' , 'login'],
-    '/create'=> ['HomeControler' , 'create'],
-    '/disconnect'=> ['HomeControler' , 'disconnect'],
+    '/index' => ['HomeControler', 'index'],
+    '/users/login'=> ['AuthentificationControler' , 'login'],
+    '/users/create'=> ['AuthentificationControler' , 'create'],
+    '/users/disconnect'=> ['AuthentificationControler' , 'disconnect'],
     '/mentionsLegale'=> ['HomeControler' , 'mentionsLegale']
 ];

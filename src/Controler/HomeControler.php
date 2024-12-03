@@ -6,11 +6,11 @@ class HomeControler extends AbstractControler
 {
     public function index(): void
     {
-        $this->render('index');
+        $this->render('/home/index');
     }
     public function mentionsLegale(): void
     {
-        $this->render('mentionsLegale');
+        $this->render('/home/mentionsLegale');
     }
     public function login(): void
     {

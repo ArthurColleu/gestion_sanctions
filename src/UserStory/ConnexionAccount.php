@@ -23,7 +23,7 @@ class ConnexionAccount
     public function connexion(string $email, string $password){
         //Vérifier que les données sont présentes
         //Si tel n'est pas le cas, lancer une exception
-        if (empty($email) && empty($password)){
+        if (empty($email) || empty($password)){
             throw new \Exception("Veuillez entrer tous les champs");
         }
         //Verifier si l'email est valide
@@ -41,8 +41,9 @@ class ConnexionAccount
         if (!password_verify($password, $user->getPassword())) {
             throw new \Exception("Mot de passe incorrect");
         }
-        $_SESSION["prenom"] = $user->getPrenom();
-        $_SESSION["nom"] = $user->getNom();
+        $_SESSION["prenom_user"] = $user->getPrenom();
+        $_SESSION["nom_user"] = $user->getNom();
+        $_SESSION["email_user"] = $user->getEmail();
 
     }
 }

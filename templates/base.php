@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-<!DOCTYPE html>
+<?php
+session_start();
+?>
 
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,28 +21,28 @@
 <?php
 echo "<header class='bg-black py-1 '>
             <nav class='navbar navbar-expand-sm'>
-                <img src='images/logo_lycee_Gaudper.png' class='mx-2 ' alt='logo' style='height:75px'> 
+                <img src='/images/logo_lycee_Gaudper.png' class='mx-2 ' alt='logo' style='height:75px'> 
                 <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
                     <span class='navbar-toggler-icon'></span>
                 </button>
                 <div class='container-fluid'>
                     <div class='collapse navbar-collapse' id='navbarNav'>
                         <div class='navbar-nav'>
-                            <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='?case=defaut'>Accueil</a>";
-                            if ( ! isset($connectionStatus) || $connectionStatus == 'no'){
+                            <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/index'>Accueil</a>";
+                            if ( !isset($_SESSION["connectionStatus"]) || $_SESSION["connectionStatus"] == 'no'){
                                 echo "
-                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/login'>Se connecter</a>
-                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/create'>créer un compte</a>";
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/login'>Se connecter</a>
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/create'>créer un compte</a>";
                             } else {
-                                echo "<a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/?case=disconnect&action=disconnect&postaction=redirectHome'>Déconnexion</a>";
+                                echo "<a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/disconnect'>Déconnexion</a>";
                             }
                             echo "</div>
                     </div>
                 </div>
             </nav>
         </header>";
-        if(isset($prenom) && isset($nom)){
-            echo "<div> Vous êtes connecté en tant que " . $prenom . " " . $nom . " </div>";
+        if(isset($_SESSION["prenom_user"]) && isset($_SESSION["nom_user"])){
+            echo "<div> Vous êtes connecté en tant que " . $_SESSION["prenom_user"] . " " . $_SESSION["nom_user"] . " </div>";
         }
 ?>
 

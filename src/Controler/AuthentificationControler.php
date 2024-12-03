@@ -2,54 +2,72 @@
 
 namespace App\Controler;
 
+use App\Entity\User;
 use App\UserStory\ConnexionAccount;
 use App\UserStory\CreateAccount;
 use Doctrine\ORM\EntityManager;
 
-class AuthentificationControler
+class AuthentificationControler extends AbstractControler
 {
-    public function login(EntityManager $entityManager): string
+    private EntityManager $entityManager;
+
+    /**
+     * @param EntityManager $entityManager
+     */
+    public function __construct(EntityManager $entityManager)
     {
-        $email = $_REQUEST["connexionEmail"];
-        $password = $_REQUEST["connexionPassword"];
-
-        $connector = new ConnexionAccount($entityManager);
-        try{
-            $connector->connexion($email, $password);
-            $_SESSION["connectionStatus"] = "yes";
-            return "http://" . $_SERVER["HTTP_HOST"];
-            //var_dump($_SESSION);
-        } catch(\Exception $e){
-            $_SESSION["connectionStatus"] = "no";
-            //var_dump($_SESSION);
-            $_SESSION["errorMessage"] = $e->getMessage();
-        }
-        return "";
+        $this->entityManager = $entityManager;
     }
-    public function createUser (EntityManager $entityManager) : void {
-        $email = $_REQUEST["email"];
-        $prenom = $_REQUEST["prenom"];
-        $nom = $_REQUEST["nom"];
-        $password = $_REQUEST["password"];
-        $confirmePassword = $_REQUEST["confirmePassword"];
 
-        $creator = new CreateAccount($this->entityManager);
-        try{
-            $creator->execute($nom, $prenom, $email, $password, $confirmePassword);
-        } catch(\Exception $e){
-            $_SESSION["errorMessage"] = $e->getMessage();
+    public function login(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $email = $_REQUEST["connexionEmail"];
+            $password = $_REQUEST["connexionPassword"];
+
+            $connector = new ConnexionAccount($this->entityManager);
+            try {
+                $user= new User();
+                $connector->connexion($email, $password);
+                $_SESSION["connectionStatus"] = "yes";
+                $this->redirect("/index");
+                var_dump($_SESSION);
+                //return "http://" . $_SERVER["HTTP_HOST"];
+                //var_dump($_SESSION);
+            } catch (\Exception $e) {
+                $_SESSION["connectionStatus"] = "no";
+                //var_dump($_SESSION);
+                $_SESSION["errorMessage"] = $e->getMessage();
+            }
         }
+        $this->render('users/login');
+    }
+    public function create () : void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_REQUEST["email"];
+            $prenom = $_REQUEST["prenom"];
+            $nom = $_REQUEST["nom"];
+            $password = $_REQUEST["password"];
+            $confirmePassword = $_REQUEST["confirmePassword"];
 
+            $creator = new CreateAccount($this->entityManager);
+            try{
+                $creator->execute($nom, $prenom, $email, $password, $confirmePassword);
+                $this->redirect('/users/login');
+            } catch(\Exception $e){
+                $_SESSION["errorMessage"] = $e->getMessage();
+            }
+        }
+        $this->render('users/create');
     }
     public function disconnect(): void
     {
         $_SESSION["connectionStatus"] = "no";
-        unset($_SESSION["prenom"]);
-        unset($_SESSION["nom"]);
-
-    }
-    public function redirectHome(): void
-    {
-        header('Refresh: 5; URL=http://' . $_SERVER["HTTP_HOST"]);
+        unset($_SESSION["prenom_user"]);
+        unset($_SESSION["nom_user"]);
+        unset($_SESSION["email_user"]);
+        $this->redirect('/users/login');
     }
 }
