@@ -65,4 +65,8 @@ class AuthentificationControler extends AbstractControler
         unset($_SESSION["email_user"]);
         $this->redirect('/users/login');
     }
+    public function createPromo(): void
+    {
+
+    }
 }
