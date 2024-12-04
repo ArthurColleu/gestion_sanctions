@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controler;
-
 use App\Entity\User;
 use App\UserStory\ConnexionAccount;
 use App\UserStory\CreateAccount;
@@ -28,16 +27,12 @@ class AuthentificationControler extends AbstractControler
 
             $connector = new ConnexionAccount($this->entityManager);
             try {
-                $user= new User();
                 $connector->connexion($email, $password);
                 $_SESSION["connectionStatus"] = "yes";
-                $this->redirect("/index");
-                var_dump($_SESSION);
-                //return "http://" . $_SERVER["HTTP_HOST"];
                 //var_dump($_SESSION);
+                $this->redirect("/");
             } catch (\Exception $e) {
                 $_SESSION["connectionStatus"] = "no";
-                //var_dump($_SESSION);
                 $_SESSION["errorMessage"] = $e->getMessage();
             }
         }

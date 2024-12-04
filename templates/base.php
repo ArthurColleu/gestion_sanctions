@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +24,9 @@ echo "<header class='bg-black py-1 '>
                 <div class='container-fluid'>
                     <div class='collapse navbar-collapse' id='navbarNav'>
                         <div class='navbar-nav'>
-                            <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/index'>Accueil</a>";
-                            if ( !isset($_SESSION["connectionStatus"]) || $_SESSION["connectionStatus"] == 'no'){
+                            <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/'>Accueil</a>";
+                            //var_dump($_SESSION);
+                            if ( !isset($_SESSION["connectionStatus"]) || $_SESSION["connectionStatus"] === 'no'){
                                 echo "
                                     <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/login'>Se connecter</a>
                                     <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/create'>créer un compte</a>";
