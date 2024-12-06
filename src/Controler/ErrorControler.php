@@ -8,4 +8,8 @@ class ErrorControler extends AbstractControler
     {
         $this->renderError(404);
     }
+    public function error500($message): void
+    {
+        $this->renderError(500, $message);
+    }
 }

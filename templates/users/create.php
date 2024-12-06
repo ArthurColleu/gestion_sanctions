@@ -1,25 +1,28 @@
 <div class="container">
     <h1 class='text-center'>Créer votre compte✋😌</h1>
+    <?php if (isset($_SESSION["creationErrorMessage"])){
+        echo "<div class='fw-bold text-center text-danger'>". $_SESSION['creationErrorMessage']." </div>";
+    } ?>
     <form action='/users/create' method='post' style='max-width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 100px'>
         <div style='margin-bottom: 15px;'>
             <label for='prenom' style='display: block;'>Prénom :</label>
             <input type='text'
                    name='prenom'
-                   value="<?= (!empty($_SESSION["errorMessage"])) ? $_POST['prenom'] : ''  ?>"
+                   value='<?= (!empty($_SESSION['creationErrorMessage'])) ? $_POST['prenom'] : ''  ?>'
                    style='width: 100%;'>
         </div>
         <div style='margin-bottom: 15px;'>
             <label for='nom' style='display: block;'>Nom :</label>
             <input type='text'
                    name='nom'
-                   value="<?= (!empty($_SESSION["errorMessage"])) ? $_POST['nom'] : ''  ?>"
+                   value="<?= (!empty($_SESSION['creationErrorMessage'])) ? $_POST['nom'] : ''  ?>"
                    style='width: 100%;'>
         </div>
         <div style='margin-bottom: 15px;'>
             <label for='email' style='display: block;'>Entrez votre email :</label>
             <input type='email'
                    name='email'
-                   value="<?= (!empty($_SESSION["errorMessage"])) ? $_POST['email'] : ''  ?>"
+                   value="<?= (!empty($_SESSION['creationErrorMessage'])) ? $_POST['email'] : ''  ?>"
                    style='width: 100%;'>
         </div>
         <div style='margin-bottom: 15px;'>

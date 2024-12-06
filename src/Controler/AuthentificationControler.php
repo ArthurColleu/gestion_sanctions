@@ -50,9 +50,10 @@ class AuthentificationControler extends AbstractControler
             $creator = new CreateAccount($this->entityManager);
             try{
                 $creator->execute($nom, $prenom, $email, $password, $confirmePassword);
+                unset($_SESSION["creationErrorMessage"]);
                 $this->redirect('/users/login');
             } catch(\Exception $e){
-                $_SESSION["errorMessage"] = $e->getMessage();
+                $_SESSION["creationErrorMessage"] = $e->getMessage();
             }
         }
         $this->render('users/create');
@@ -63,6 +64,7 @@ class AuthentificationControler extends AbstractControler
         unset($_SESSION["prenom_user"]);
         unset($_SESSION["nom_user"]);
         unset($_SESSION["email_user"]);
+        throw new \Exception("Test error 500");
         $this->redirect('/users/login');
     }
 }

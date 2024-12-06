@@ -30,5 +30,5 @@ try {
 } catch (\Exception $e) {
     error_log($e->getMessage());
     $errorController = new \App\Controler\ErrorControler();
-    $errorController->error404();
+    $errorController->error500($e->getMessage());
 }

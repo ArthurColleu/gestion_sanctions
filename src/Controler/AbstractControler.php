@@ -24,10 +24,6 @@ abstract class AbstractControler
     public function renderError(int $code = 404, string $message = null): void
     {
         http_response_code($code);
-
-        if ($code === 404) {
-            $this->render('error/404');
-            exit;
-        }
+        $this->render('error/' . $code);
     }
 }
