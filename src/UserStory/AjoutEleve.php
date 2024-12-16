@@ -19,5 +19,9 @@ class AjoutEleve
     }
     public function ajoutEleve($promotion , $eleve){
 
+        $test=fopen($eleve,"r");
+        while (($data = fgetcsv($test, 50, ",")) !== FALSE) {
+            echo $data."<br>";
+        }
     }
 }

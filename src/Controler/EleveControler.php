@@ -2,6 +2,7 @@
 
 namespace App\Controler;
 
+use App\UserStory\AjoutEleve;
 use App\UserStory\CreatePromotion;
 use Doctrine\ORM\EntityManager;
 
@@ -20,15 +21,15 @@ class EleveControler extends AbstractControler
     public function ajouterEleve(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $promotion = $_REQUEST["promotion"];
-            $eleve = $_REQUEST["eleve"];
-            $promotion = new CreatePromotion($this->entityManager);
+            $eleve = $_REQUEST["eleves"];
+            $listeEleves = new AjoutEleve($this->entityManager);
 
             try{
-                $promotion->execute($annee, $libelle);
-                $this->redirect('/');
+                $listeEleves->ajoutEleve($promotion, $eleve);
             } catch(\Exception $e){
                 $_SESSION["errorMessage"] = $e->getMessage();
             }
         }
+        $this->render("eleve/ajout_eleve");
     }
 }
