@@ -5,6 +5,6 @@ return [
     '/users/login'=> ['AuthentificationControler' , 'login'],
     '/users/create'=> ['AuthentificationControler' , 'create'],
     '/users/disconnect'=> ['AuthentificationControler' , 'disconnect'],
-    '/promo/create'=> ['AuthentificationControler' , 'createPromo'],
+    '/promo/create'=> ['PromotionControler' , 'createPromo'],
     '/mentionsLegale'=> ['HomeControler' , 'mentionsLegale']
 ];

@@ -9,18 +9,18 @@ class Promotion
 {
     #[ORM\Id]
     #[ORM\Column(name: 'libelle', type: 'string', length: 255)]
-    private string $Libelle;
+    private string $libelle;
     #[ORM\Column(name: 'annee', type: 'string', length: 10)]
     private string $annee;
 
     public function getLibelle(): string
     {
-        return $this->Libelle;
+        return $this->libelle;
     }
 
-    public function setLibelle(string $Libelle): void
+    public function setLibelle(string $libelle): void
     {
-        $this->Libelle = $Libelle;
+        $this->libelle = $libelle;
     }
 
     public function getAnnee(): string
