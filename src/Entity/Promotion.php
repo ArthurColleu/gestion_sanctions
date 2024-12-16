@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'promotions')]
 class Promotion
 {
-    #[ORM\Id]
     #[ORM\Column(name: 'libelle', type: 'string', length: 255)]
     private string $libelle;
     #[ORM\Column(name: 'annee', type: 'string', length: 10)]

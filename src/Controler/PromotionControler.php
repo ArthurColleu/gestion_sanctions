@@ -31,5 +31,7 @@ class PromotionControler extends AbstractControler
             }
         }
         $this->render('/promo/create');
+        unset($_SESSION["errorMessage"]);
+
     }
 }

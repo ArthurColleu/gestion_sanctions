@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class='text-center'>Créer votre compte✋😌</h1>
+    <h1 class='text-center'>Créer votre compte</h1>
     <form action='/users/create' method='post' style='max-width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 100px'>
         <div style='margin-bottom: 15px;'>
             <label for='prenom' style='display: block;'>Prénom :</label>

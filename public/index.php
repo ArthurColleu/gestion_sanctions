@@ -17,7 +17,6 @@ if (!isset($routes[$uri])) {
     $errorController->error404();
     exit;
 }
-
 // Récupération du contrôleur et de l'action
 [$controllerName, $action] = $routes[$uri];
 //var_dump($controllerName, $action);
