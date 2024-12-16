@@ -37,6 +37,8 @@ class AuthentificationControler extends AbstractControler
             }
         }
         $this->render('users/login');
+        unset($_SESSION["errorMessage"]);
+
     }
     public function create () : void
     {
@@ -56,6 +58,8 @@ class AuthentificationControler extends AbstractControler
             }
         }
         $this->render('users/create');
+        unset($_SESSION["errorMessage"]);
+
     }
     public function disconnect(): void
     {
