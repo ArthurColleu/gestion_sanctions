@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class='text-center'>Connexion✋😌</h1>
+    <h1 class='text-center'>Connexion</h1>
     <?php if (isset($_SESSION["errorMessage"])){
         echo "<div class='fw-bold text-center text-danger'>". $_SESSION['errorMessage']." </div>";
     } ?>
@@ -8,7 +8,7 @@
             <label for='connexionEmail' style='display: block;'>Entrez votre email : </label>
             <input type='email'
                    name='connexionEmail'
-                   value="<?= (!empty($_SESSION["errorMessage"])) ? $_POST['connexionEmail'] : ''  ?>" style='width: 100%;'>
+                   value="<?= (isset($_SESSION["errorMessage"])) ? $_POST['connexionEmail'] : ''  ?>" style='width: 100%;'>
         </div>
         <div style='margin-bottom: 15px;'>
             <label for='connexionPassword' style='display: block;'>Entrez mot de passe : </label>

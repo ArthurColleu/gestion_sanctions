@@ -60,13 +60,10 @@ class AuthentificationControler extends AbstractControler
     public function disconnect(): void
     {
         $_SESSION["connectionStatus"] = "no";
+        unset($_SESSION["errorMessage"]);
         unset($_SESSION["prenom_user"]);
         unset($_SESSION["nom_user"]);
         unset($_SESSION["email_user"]);
         $this->redirect('/users/login');
-    }
-    public function createPromo(): void
-    {
-
     }
 }
