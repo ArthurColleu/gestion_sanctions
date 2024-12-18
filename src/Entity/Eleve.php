@@ -13,10 +13,9 @@ class Eleve
     private string $nom_eleve;
     #[ORM\Column(name: 'prenom_eleve', type: 'string', length: 50)]
     private string $prenom_eleve;
-    #[ORM\Column(name:'id_promotion', type: 'integer')]
-    #[ORM\ManyToOne(targetEntity: 'Promotion')]
-    #[ORM\JoinColumn(referencedColumnName: 'id_promotion', nullable: false)]
-    private int $idPromotion;
+    #[ORM\ManyToOne(targetEntity: Promotion::class)]
+    #[ORM\JoinColumn(name: 'id_promotion',referencedColumnName: 'id_promotion', nullable: false)]
+    protected Promotion $idPromotion;
     public function getIdEleve(): int
     {
         return $this->id_eleve;
@@ -33,14 +32,17 @@ class Eleve
     {
         $this->prenom_eleve = $prenom_eleve;
     }
-    public function getIdPromotion(): int
+
+    public function getIdPromotion(): Promotion
     {
         return $this->idPromotion;
     }
-    public function setIdPromotion(int $idPromotion): void
+
+    public function setIdPromotion(Promotion $idPromotion): void
     {
         $this->idPromotion = $idPromotion;
     }
+
     public function getNomEleve(): string
     {
         return $this->nom_eleve;

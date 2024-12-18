@@ -7,10 +7,24 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'promotions')]
 class Promotion
 {
+    #[ORM\Id]
+    #[ORM\Column(name:'id_promo', type: 'integer')]
+    #[ORM\GeneratedValue]
+    private int $id_promo;
     #[ORM\Column(name: 'libelle', type: 'string', length: 255)]
     private string $libelle;
     #[ORM\Column(name: 'annee', type: 'string', length: 10)]
     private string $annee;
+
+    public function getIdPromo(): int
+    {
+        return $this->id_promo;
+    }
+
+    public function setIdPromo(int $id_promo): void
+    {
+        $this->id_promo = $id_promo;
+    }
 
     public function getAnnee(): string
     {

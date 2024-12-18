@@ -5,6 +5,7 @@ namespace App\Controler;
 use App\UserStory\AjoutEleve;
 use App\UserStory\CreatePromotion;
 use Doctrine\ORM\EntityManager;
+use League\Csv\Reader;
 
 class EleveControler extends AbstractControler
 {
@@ -21,9 +22,8 @@ class EleveControler extends AbstractControler
     public function ajouterEleve(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $promotion = $_REQUEST["promotion"];
-            $eleve = $_REQUEST["eleves"];
+            $eleve =$_FILES["ListeEleves"]["tmp_name"];
             $listeEleves = new AjoutEleve($this->entityManager);
-
             try{
                 $listeEleves->ajoutEleve($promotion, $eleve);
             } catch(\Exception $e){
@@ -31,5 +31,6 @@ class EleveControler extends AbstractControler
             }
         }
         $this->render("eleve/ajout_eleve");
+        unset($_SESSION["errorMessage"]);
     }
 }

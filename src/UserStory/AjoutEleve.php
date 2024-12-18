@@ -4,6 +4,7 @@ namespace App\UserStory;
 
 use App\Entity\Eleve;
 use Doctrine\ORM\EntityManager;
+use League\Csv\Reader;
 
 class AjoutEleve
 {
@@ -18,10 +19,19 @@ class AjoutEleve
         $this->entityManager = $entityManager;
     }
     public function ajoutEleve($promotion , $eleve){
+        if(empty($promotion) && empty($eleve)){
+            throw new \Exception("Veuillez remplir tous les champ du formulaire");
+        }
 
-        $test=fopen($eleve,"r");
-        while (($data = fgetcsv($test, 50, ",")) !== FALSE) {
-            echo $data."<br>";
+        //load the CSV document from a file path
+        $csv = Reader::createFromPath($eleve, 'r');
+        $csv->setHeaderOffset(0);
+
+        $eleves=iterator_to_array($csv,true);
+
+        $eleve = new Eleve();
+        foreach ($eleves as $eleve) {
+
         }
     }
 }
