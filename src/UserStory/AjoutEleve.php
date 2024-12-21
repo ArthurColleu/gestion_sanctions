@@ -18,20 +18,21 @@ class AjoutEleve
         //L'EntityManager est injecté par dépendance
         $this->entityManager = $entityManager;
     }
-    public function ajoutEleve($promotion , $eleve){
-        if(empty($promotion) && empty($eleve)){
+    public function ajoutEleve($promotion , $ListeElevesCSV){
+        if(empty($promotion) && empty($ListeElevesCSV)){
             throw new \Exception("Veuillez remplir tous les champ du formulaire");
         }
 
         //load the CSV document from a file path
-        $csv = Reader::createFromPath($eleve, 'r');
+        $csv = Reader::createFromPath($ListeElevesCSV, 'r');
         $csv->setHeaderOffset(0);
 
-        $eleves=iterator_to_array($csv,true);
-
-        $eleve = new Eleve();
-        foreach ($eleves as $eleve) {
-
+        $ListeEleves=iterator_to_array($csv,true);
+        $eleves=new Eleve();
+        foreach($ListeEleves as $eleve){
+            $eleves->setPrenomEleve($eleve["Prénom"]);
+            $eleves->setNomEleve($eleve["Nom"]);
+            $eleve->setIdPromotion($promotion);
         }
     }
 }

@@ -9,13 +9,17 @@ class Eleve
     #[ORM\Column(name:'id_eleve', type: 'integer')]
     #[ORM\GeneratedValue]
     private int $id_eleve;
+    
     #[ORM\Column(name: 'nom_eleve', type: 'string', length: 50)]
     private string $nom_eleve;
+
     #[ORM\Column(name: 'prenom_eleve', type: 'string', length: 50)]
     private string $prenom_eleve;
+
     #[ORM\ManyToOne(targetEntity: Promotion::class)]
     #[ORM\JoinColumn(name: 'id_promotion',referencedColumnName: 'id_promotion', nullable: false)]
     protected Promotion $idPromotion;
+
     public function getIdEleve(): int
     {
         return $this->id_eleve;
