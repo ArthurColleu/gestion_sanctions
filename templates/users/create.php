@@ -5,21 +5,21 @@
             <label for='prenom' style='display: block;'>Prénom :</label>
             <input type='text'
                    name='prenom'
-                   value="<?= (!empty($_SESSION["errorMessage"])) ? $_POST['prenom'] : ''  ?>"
+                   value='<?php (!isset($_SESSION["errorMessage"])) ? $_POST['prenom'] : ''  ?>'
                    style='width: 100%;'>
         </div>
         <div style='margin-bottom: 15px;'>
             <label for='nom' style='display: block;'>Nom :</label>
             <input type='text'
                    name='nom'
-                   value="<?= (!empty($_SESSION["errorMessage"])) ? $_POST['nom'] : ''  ?>"
+                   value="<?= (!isset($_SESSION["errorMessage"])) ? $_POST['nom'] : ''  ?>"
                    style='width: 100%;'>
         </div>
         <div style='margin-bottom: 15px;'>
             <label for='email' style='display: block;'>Entrez votre email :</label>
             <input type='email'
                    name='email'
-                   value="<?= (!empty($_SESSION["errorMessage"])) ? $_POST['email'] : ''  ?>"
+                   value="<?= (!isset($_SESSION["errorMessage"])) ? $_POST['email'] : ''  ?>"
                    style='width: 100%;'>
         </div>
         <div style='margin-bottom: 15px;'>
