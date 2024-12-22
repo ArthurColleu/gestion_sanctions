@@ -2,9 +2,9 @@
 
 namespace App\Controler;
 use App\Entity\Promotion;
-use App\UserStory\CreateAccount;
 use App\UserStory\CreatePromotion;
 use Doctrine\ORM\EntityManager;
+
 class PromotionControler extends AbstractControler
 {
     private EntityManager $entityManager;
@@ -33,5 +33,9 @@ class PromotionControler extends AbstractControler
         $this->render('/promo/create');
         unset($_SESSION["errorMessage"]);
 
+    }
+
+    public function afficherPromotion(): array{
+        return $this->entityManager->getRepository(Promotion::class)->findAll();
     }
 }
