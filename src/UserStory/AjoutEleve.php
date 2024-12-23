@@ -28,6 +28,7 @@ class AjoutEleve
         $csv->setHeaderOffset(0);
 
         $ListeEleves=iterator_to_array($csv,true);
+        //return $ListeEleves;
         $eleves=new Eleve();
         foreach($ListeEleves as $eleve){
             $eleves->setPrenomEleve($eleve["Prénom"]);

@@ -11,9 +11,9 @@ class Promotion
     #[ORM\Column(name:'id_promo', type: 'integer')]
     #[ORM\GeneratedValue]
     private int $id_promo;
-    #[ORM\Column(name: 'libelle', type: 'string', length: 255)]
+    #[ORM\Column(name: 'libelle_promo', type: 'string', length: 255)]
     private string $libelle;
-    #[ORM\Column(name: 'annee', type: 'string', length: 10)]
+    #[ORM\Column(name: 'annee_promo', type: 'string', length: 10)]
     private string $annee;
 
     public function getIdPromo(): int

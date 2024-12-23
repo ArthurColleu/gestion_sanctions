@@ -31,3 +31,4 @@ try {
     $errorController = new \App\Controler\ErrorControler();
     $errorController->error404();
 }
+

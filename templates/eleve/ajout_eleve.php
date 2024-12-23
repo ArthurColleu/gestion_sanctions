@@ -1,17 +1,16 @@
 <?php
-use App\Entity\Promotion;
+use App\Controler\PromotionControler;
+$entityManager = require __DIR__. '/../../config/bootstrap.php';
+//print_r( $entityManager);
+$promotions= new \App\Controler\PromotionControler($entityManager);
+$promotions = $promotions->afficherPromotion();
+//var_dump($promotions);
 
 ?>
-
 
 <div class="container">
     <h1 class='text-center'>Ajouter des élèves</h1>
     <?php
-
-    $entityManager = require_once __DIR__ . '/../../config/bootstrap.php';
-    print_r($entityManager);
-    $promotions= new \App\Controler\PromotionControler($entityManager);
-
     if (isset($_SESSION["errorMessage"])){
         echo "<div class='fw-bold text-center text-danger'>". $_SESSION['errorMessage']." </div>";
     } ?>
@@ -19,7 +18,7 @@ use App\Entity\Promotion;
         <div style='margin-bottom: 15px;'>
             <label for='promotion' style='display: block;'>Promotion :</label>
             <select class="form-select" id="promotion">
-                <?php foreach ($promotions->afficherPromotion() as $promotion){ ?>
+                <?php foreach ($promotions as $promotion){ ?>
                     <option>
                         <?= $promotion->getLibelle().' - '.$promotion->getAnnee()  ?>
                     </option>

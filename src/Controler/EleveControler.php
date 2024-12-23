@@ -30,7 +30,7 @@ class EleveControler extends AbstractControler
                 $_SESSION["errorMessage"] = $e->getMessage();
             }
         }
-        $this->render("eleve/ajout_eleve");
+        $this->render("/eleve/ajout_eleve");
         unset($_SESSION["errorMessage"]);
     }
 }
