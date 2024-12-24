@@ -17,7 +17,7 @@ $promotions = $promotions->afficherPromotion();
     <form action='/eleve/ajout_eleve' method='post' enctype="multipart/form-data" style='max-width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 100px'>
         <div style='margin-bottom: 15px;'>
             <label for='promotion' style='display: block;'>Promotion :</label>
-            <select class="form-select" id="promotion">
+            <select class="form-select" name="promotion">
                 <?php foreach ($promotions as $promotion){ ?>
                     <option>
                         <?= $promotion->getLibelle().' - '.$promotion->getAnnee()  ?>
