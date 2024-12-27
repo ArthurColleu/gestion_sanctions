@@ -17,7 +17,7 @@ class Eleve
     private string $prenom_eleve;
 
     #[ORM\ManyToOne(targetEntity: Promotion::class)]
-    #[ORM\JoinColumn(name: 'id_promotion',referencedColumnName: 'id_promotion', nullable: false)]
+    #[ORM\JoinColumn(name: 'id_promotion',referencedColumnName: 'id_promo', nullable: false)]
     protected Promotion $idPromotion;
 
     public function getIdEleve(): int

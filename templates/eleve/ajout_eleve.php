@@ -24,17 +24,12 @@ $promotions = $promotions->afficherPromotion();
                     </option>
                 <?php } ?>
             </select>
-            <!--<input type='text'
-                   name='promotion'
-                   value="<?php //echo (isset($_SESSION["errorMessage"])) ? $_POST['promotion'] : '' ?>"
-                   style='width: 100%;'> -->
         </div>
         <div style='margin-bottom: 15px;'>
             <label for='ListeEleves' style='display: block;'>Élève(s) :</label>
             <input type="file"
                    accept=".csv"
                    name='ListeEleves'
-                   value="<?= (isset($_SESSION["errorMessage"])) ? $_POST['eleves'] : ''  ?>"
                    style='width: 100%;'>
         </div>
         <button type='submit' style='width: 100%;'>Ajouter des élève</button>
