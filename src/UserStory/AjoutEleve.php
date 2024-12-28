@@ -33,23 +33,35 @@ class AjoutEleve
         $csv->setHeaderOffset(0);
         $ListeEleves=iterator_to_array($csv,true);
         //return $ListeEleves;
-        $eleves=new Eleve();
-        var_dump($ListeEleves);
+        //var_dump($ListeEleves);
 
-        $verifElevesRepository = $this->entityManager->getRepository(Eleve::class);
-        $verifEleves = $verifElevesRepository->findAll();
-        //foreach($verifEleves as $eleve){
-        //    if()
-        //}
+        foreach ($ListeEleves as $eleve) {
+            $eleveExistant = $this->entityManager->getRepository(Eleve::class)->findOneBy([
+                'prenom_eleve' => $eleve["Prénom"],
+                'nom_eleve' => $eleve["Nom"],
+                'idPromotion' => $promotion
+            ]);
 
+            if($eleveExistant){
+                $elevesExistant[] = $eleve["Prénom"] . " " . $eleve["Nom"];
+            }
+        }
+
+        if (!empty($elevesExistant)) {
+            $message = "Le(s) élève(s) suivant(s) existe(nt) déjà dans la base de données :<br>";
+            $message .= implode("<br> ", $elevesExistant);
+            throw new \Exception($message);
+        }
         foreach($ListeEleves as $eleve){
+            $eleves=new Eleve();
             $eleves->setPrenomEleve($eleve["Prénom"]);
             $eleves->setNomEleve($eleve["Nom"]);
             $eleves->setIdPromotion($promotion);
 
             $this->entityManager->persist($eleves);
-            $this->entityManager->flush();
 
         }
+        $this->entityManager->flush();
+
     }
 }
