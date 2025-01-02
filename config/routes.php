@@ -7,5 +7,7 @@ return [
     '/users/disconnect'=> ['AuthentificationControler' , 'disconnect'],
     '/promo/create'=> ['PromotionControler' , 'createPromo'],
     '/eleve/ajout_eleve'=> ['EleveControler' , 'ajouterEleve'],
-    '/mentionsLegale'=> ['HomeControler' , 'mentionsLegale']
+    '/mentionsLegale'=> ['HomeControler' , 'mentionsLegale'],
+    '/sanction/createSanction'=> ['SanctionControler' , 'createSanction']
+
 ];

@@ -2,6 +2,7 @@
 
 namespace App\Controler;
 
+use App\Entity\Eleve;
 use App\UserStory\AjoutEleve;
 use App\UserStory\CreatePromotion;
 use Doctrine\ORM\EntityManager;
@@ -32,5 +33,9 @@ class EleveControler extends AbstractControler
         }
         $this->render("/eleve/ajout_eleve");
         unset($_SESSION["errorMessage"]);
+    }
+
+    public function afficherEleve(): array{
+        return $this->entityManager->getRepository(Eleve::class)->findAll();
     }
 }

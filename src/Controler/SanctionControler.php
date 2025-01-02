@@ -2,6 +2,7 @@
 
 namespace App\Controler;
 use App\Entity\Sanction;
+use DateTime;
 use Doctrine\ORM\EntityManager;
 
 class SanctionControler extends AbstractControler
@@ -18,23 +19,30 @@ class SanctionControler extends AbstractControler
     public function createSanction(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $annee = $_REQUEST["annee"];
-            $libelle = $_REQUEST["libelle"];
-            $promotion = new CreateSanction($this->entityManager);
+            $id_eleve = $_POST["eleve"];
+            $motif = $_POST["motif"];
+            $description = $_POST["description"];
+            $nomDemandeur= $_POST["demandeur"];
+            $date_incident= $_POST["date_incident"];
+            $dateCreationSanction = new \DateTime("Y-m-d");
+            $createurSanction = $_SESSION["id_user"];
 
+            $promotion = new \App\UserStory\CreateSanction($this->entityManager);
+            
             try{
-                //$promotion->execute($annee, $libelle);
-                //$this->redirect('/');
+                $promotion->execute($id_eleve,$motif,$description,$nomDemandeur,
+                    $date_incident,$dateCreationSanction,$createurSanction);
+
+                $this->redirect('/');
             } catch(\Exception $e){
                 $_SESSION["errorMessage"] = $e->getMessage();
             }
         }
-        $this->render('/promo/createSanction');
+        $this->render('/sanction/createSanction');
         unset($_SESSION["errorMessage"]);
-
     }
 
-    public function afficherPromotion(): array{
+    public function afficherSanction(): array{
         return $this->entityManager->getRepository(Sanction::class)->findAll();
     }
 }

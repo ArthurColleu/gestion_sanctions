@@ -1,5 +1,7 @@
 <?php
 namespace App\Entity;
+
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 #[ORM\Table(name: 'sanctions')]
@@ -12,26 +14,26 @@ class Sanction{
 
     #[ORM\ManyToOne(targetEntity: Eleve::class)]
     #[ORM\JoinColumn(name: 'id_eleve',referencedColumnName: 'id_eleve', nullable: false)]
-    protected Promotion $id_eleve;
+    private Eleve $id_eleve;
     
     #[ORM\Column(name: 'nom_demandeur', type: 'string', length: 255)]
-    protected Promotion $nom_demandeur;
+    private string $nom_demandeur;
 
     #[ORM\Column(name: 'motif', type: 'string', length: 255)]
-    protected Promotion $motif;
+    private string $motif;
 
     #[ORM\Column(name: 'description', type: 'string')]
-    protected Promotion $description;
+    private string $description;
 
     #[ORM\Column(name: 'date_incident', type: 'date')]
-    protected Promotion $date_incident;
+    private string  $date_incident;
 
     #[ORM\Column(name: 'date_creation', type: 'date')]
-    protected Promotion $date_creation;
+    private string $date_creation;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(name: 'id_user',referencedColumnName: 'id_user', nullable: false)]
-    protected Promotion $id_user;
+    protected User $id_user;
 
     public function getIdSanction(): int
     {
@@ -43,74 +45,75 @@ class Sanction{
         $this->id_sanction = $id_sanction;
     }
 
-    public function getIdEleve(): Promotion
+    public function getIdEleve(): Eleve
     {
         return $this->id_eleve;
     }
 
-    public function setIdEleve(Promotion $id_eleve): void
+    public function setIdEleve(Eleve $id_eleve): void
     {
         $this->id_eleve = $id_eleve;
     }
 
-    public function getNomDemandeur(): Promotion
+    public function getNomDemandeur(): string
     {
         return $this->nom_demandeur;
     }
 
-    public function setNomDemandeur(Promotion $nom_demandeur): void
+    public function setNomDemandeur(string $nom_demandeur): void
     {
         $this->nom_demandeur = $nom_demandeur;
     }
 
-    public function getMotif(): Promotion
+    public function getMotif(): string
     {
         return $this->motif;
     }
 
-    public function setMotif(Promotion $motif): void
+    public function setMotif(string $motif): void
     {
         $this->motif = $motif;
     }
 
-    public function getDescription(): Promotion
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function setDescription(Promotion $description): void
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    public function getDateIncident(): Promotion
+    public function getDateIncident(): string
     {
         return $this->date_incident;
     }
 
-    public function setDateIncident(Promotion $date_incident): void
+    public function setDateIncident(string $date_incident): void
     {
         $this->date_incident = $date_incident;
     }
 
-    public function getDateCreation(): Promotion
+    public function getDateCreation(): string
     {
         return $this->date_creation;
     }
 
-    public function setDateCreation(Promotion $date_creation): void
+    public function setDateCreation(\DateTimeInterface $date_creation): void
     {
-        $this->date_creation = $date_creation;
+        $this->date_creation =  $date_creation;
     }
 
-    public function getIdUser(): Promotion
+    public function getIdUser(): User
     {
         return $this->id_user;
     }
 
-    public function setIdUser(Promotion $id_user): void
+    public function setIdUser(User $id_user): void
     {
         $this->id_user = $id_user;
     }
+
 
 }

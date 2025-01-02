@@ -44,6 +44,7 @@ class ConnexionAccount
         $_SESSION["prenom_user"] = $user->getPrenom();
         $_SESSION["nom_user"] = $user->getNom();
         $_SESSION["email_user"] = $user->getEmail();
+        $_SESSION["id_user"] = $user->getId();
 
     }
 }
