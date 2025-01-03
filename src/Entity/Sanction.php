@@ -26,10 +26,10 @@ class Sanction{
     private string $description;
 
     #[ORM\Column(name: 'date_incident', type: 'date')]
-    private string  $date_incident;
+    private \DateTimeInterface  $date_incident;
 
     #[ORM\Column(name: 'date_creation', type: 'date')]
-    private string $date_creation;
+    private \DateTimeInterface $date_creation;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(name: 'id_user',referencedColumnName: 'id_user', nullable: false)]
@@ -85,17 +85,17 @@ class Sanction{
         $this->description = $description;
     }
 
-    public function getDateIncident(): string
+    public function getDateIncident(): \DateTimeInterface
     {
         return $this->date_incident;
     }
 
     public function setDateIncident(string $date_incident): void
     {
-        $this->date_incident = $date_incident;
+        $this->date_incident = new \DateTime($date_incident);
     }
 
-    public function getDateCreation(): string
+    public function getDateCreation(): \DateTimeInterface
     {
         return $this->date_creation;
     }

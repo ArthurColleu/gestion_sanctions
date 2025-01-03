@@ -24,7 +24,7 @@ class CreateSanction
         string $description,
         string $nomDemandeur,
         string $date_incident,
-        \DateTime $dateCreationSanction,
+        string $dateCreationSanction,
         int $createurSanction)
     {
         //Vérifier que les données sont présentes
@@ -56,7 +56,7 @@ class CreateSanction
         $sanction->setMotif($motif);
         $sanction->setDescription($description);
         $sanction->setDateIncident($date_incident);
-        $sanction->setDateCreation($dateCreationSanction);
+        $sanction->setDateCreation(new \DateTime($dateCreationSanction));
         $sanction->setIdUser($createurSanction);
 
         $this->entityManager->persist($sanction);

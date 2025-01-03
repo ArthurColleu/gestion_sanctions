@@ -24,14 +24,15 @@ class SanctionControler extends AbstractControler
             $description = $_POST["description"];
             $nomDemandeur= $_POST["demandeur"];
             $date_incident= $_POST["date_incident"];
-            $dateCreationSanction = new \DateTime("Y-m-d");
+            //gettype($date_incident);
+            $dateCreationSanction =  date("Y-m-d");
             $createurSanction = $_SESSION["id_user"];
 
             $promotion = new \App\UserStory\CreateSanction($this->entityManager);
             
             try{
                 $promotion->execute($id_eleve,$motif,$description,$nomDemandeur,
-                    $date_incident,$dateCreationSanction,$createurSanction);
+                $date_incident,$dateCreationSanction,$createurSanction);
 
                 $this->redirect('/');
             } catch(\Exception $e){

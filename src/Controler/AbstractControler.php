@@ -29,5 +29,9 @@ abstract class AbstractControler
             $this->render('error/404');
             exit;
         }
+        if ($code === 500) {
+            $this->render('error/500');
+            exit;
+        }
     }
 }
