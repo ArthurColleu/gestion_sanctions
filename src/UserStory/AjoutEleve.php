@@ -32,17 +32,33 @@ class AjoutEleve
         $csv->setHeaderOffset(0);
         $ListeEleves=iterator_to_array($csv,true);
         //return $ListeEleves;
-        $eleves=new Eleve();
         //var_dump($ListeEleves);
 
+        foreach ($ListeEleves as $eleve) {
+            $eleveExistant = $this->entityManager->getRepository(Eleve::class)->findOneBy([
+                'prenom_eleve' => $eleve["Prénom"],
+                'nom_eleve' => $eleve["Nom"],
+                'idPromotion' => $promotion
+            ]);
+    
+            if ($eleveExistant) {
+                $elevesExistant[] = "{$eleve["Prénom"]} {$eleve["Nom"]}";
+            }
+        }
+
+        if (!empty($elevesExistant)) {
+            $elevesListe = implode("<br>- ", $elevesExistant);
+            throw new \Exception("Les élèves suivants sont déjà enregistrés dans cette promotion :<br>- $elevesListe.");
+        }
+
         foreach($ListeEleves as $eleve){
+            $eleves=new Eleve();
             $eleves->setPrenomEleve($eleve["Prénom"]);
             $eleves->setNomEleve($eleve["Nom"]);
             $eleves->setIdPromotion($promotion);
 
             $this->entityManager->persist($eleves);
-            $this->entityManager->flush();
-
         }
+        $this->entityManager->flush();
     }
 }
