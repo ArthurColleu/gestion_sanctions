@@ -68,6 +68,6 @@ class AuthentificationControler extends AbstractControler
         unset($_SESSION["prenom_user"]);
         unset($_SESSION["nom_user"]);
         unset($_SESSION["email_user"]);
-        $this->redirect('/users/login');
+        $this->redirect('/');
     }
 }
