@@ -38,7 +38,7 @@ class ConnexionAccount
         if (!isset($user)){
             throw new \Exception("Email introuvable");
         }
-        if (password_verify($password, $user->getPassword())) {
+        if (!password_verify($password, $user->getPassword())) {
             throw new \Exception("Mot de passe incorrect");
         }
         $_SESSION["prenom_user"] = $user->getPrenom();
