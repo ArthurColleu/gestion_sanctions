@@ -28,7 +28,7 @@ class AjoutEleve
         $promotion = $promotionRepository->findOneBy(array('libelle'=>"$promotion[0]", "annee"=>$promotion[1]));
         //var_dump($promotion);
         //load the CSV document from a file path
-        $csv = Reader::createFromPath($ListeElevesCSV, 'r');
+        $csv = Reader::createFromPath($ListeElevesCSV);
         $csv->setHeaderOffset(0);
         $ListeEleves=iterator_to_array($csv,true);
         //return $ListeEleves;

@@ -21,6 +21,6 @@
                        value="<?= (isset($_SESSION["errorMessage"])) ? $_POST['annee'] : ''  ?>"
                        style='width: 100%;'>
         </div>
-        <button type='submit' style='width: 100%;'>Créer son compte</button>
+        <button type='submit' style='width: 100%;'>Créer la promotion</button>
     </form>
 </div>
