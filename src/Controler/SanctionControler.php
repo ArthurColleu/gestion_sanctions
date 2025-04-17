@@ -25,7 +25,7 @@ class SanctionControler extends AbstractControler
             $nomDemandeur= $_POST["demandeur"];
             $date_incident= $_POST["date_incident"];
             //gettype($date_incident);
-            $dateCreationSanction =  date("Y-m-d H:i:s");
+            $dateCreationSanction =  date("Y-m-d");
             $createurSanction = $_SESSION["id_user"];
 
             $promotion = new \App\UserStory\CreateSanction($this->entityManager);
