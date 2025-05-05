@@ -5,5 +5,9 @@ return [
     '/users/login'=> ['AuthentificationControler' , 'login'],
     '/users/create'=> ['AuthentificationControler' , 'create'],
     '/users/disconnect'=> ['AuthentificationControler' , 'disconnect'],
-    '/mentionsLegale'=> ['HomeControler' , 'mentionsLegale']
+    '/promo/create'=> ['PromotionControler' , 'createPromo'],
+    '/eleve/ajout_eleve'=> ['EleveControler' , 'ajouterEleve'],
+    '/mentionsLegale'=> ['HomeControler' , 'mentionsLegale'],
+    '/sanction/createSanction'=> ['SanctionControler' , 'createSanction']
+
 ];

@@ -31,7 +31,12 @@ echo "<header class='bg-black py-1 '>
                                     <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/login'>Se connecter</a>
                                     <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/create'>créer un compte</a>";
                             } else {
-                                echo "<a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/disconnect'>Déconnexion</a>";
+                                echo "
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/sanction/createSanction'>Création de sanction</a>
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/eleve/ajout_eleve'>Ajouter des élèves</a>
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/promo/create'>Créer une promotion</a>
+                                    <a class='mx-2 text-white text-center link-underline link-underline-opacity-0' href='/users/disconnect'>Déconnexion</a>
+                                    ";
                             }
                             echo "</div>
                     </div>

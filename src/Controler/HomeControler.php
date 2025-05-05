@@ -20,6 +20,7 @@ class HomeControler extends AbstractControler
     {
         $this->render('create');
     }
+
     public function disconnect(): void
     {
         $this->render('disconnect');

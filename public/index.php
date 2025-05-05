@@ -17,9 +17,15 @@ if (!isset($routes[$uri])) {
     $errorController->error404();
     exit;
 }
-
 // Récupération du contrôleur et de l'action
-[$controllerName, $action] = $routes[$uri];
+try {
+    [$controllerName, $action] = $routes[$uri];
+} catch (\Exception $e) {
+    error_log($e->getMessage());
+    $errorController = new \App\Controler\ErrorControler();
+    $errorController->error404();
+}
+
 //var_dump($controllerName, $action);
 $controllerClass = "App\\Controler\\{$controllerName}";
 
@@ -27,8 +33,10 @@ try {
     // Instanciation du contrôleur et appel de l'action
     $controller = new $controllerClass($entityManager); // Appel du constructeur du controleur
     $controller->$action();
+
 } catch (\Exception $e) {
     error_log($e->getMessage());
     $errorController = new \App\Controler\ErrorControler();
-    $errorController->error404();
+    $errorController->error500();
 }
+
