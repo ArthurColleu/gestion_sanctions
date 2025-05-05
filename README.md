@@ -1,6 +1,9 @@
 # Projet : Projet de gestion de sanction
 
-L’objectif de ce projet était de développer une application web permettant la gestion des sanctions d’élèves. Les fonctionnalités principales permettent aux utilisateurs connectés de : - créer une promotion, - importer un fichier CSV d’élèves, - attribuer une sanction à un élève.
+L’objectif de ce projet était de développer une application web permettant la gestion des sanctions d’élèves. Les fonctionnalités principales permettent aux utilisateurs connectés de :    
+- créer une promotion, 
+- importer un fichier CSV d’élèves, 
+- attribuer une sanction à un élève.
 Ce projet a pour but de faciliter la gestion disciplinaire dans un cadre scolaire.
 
 # Sommaire
