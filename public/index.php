@@ -26,7 +26,7 @@ try {
     $errorController->error404();
 }
 
-var_dump($controllerName, $action);
+//var_dump($controllerName, $action);
 $controllerClass = "App\\Controler\\{$controllerName}";
 
 try {
